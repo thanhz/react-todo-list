@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import TodoItem from "./TodoItems";
+import { todosData, todosDataType } from "./todosData";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type MyProps = {};
+type MyState = {
+  todos: todosDataType[];
+};
+class App extends React.Component<MyProps, MyState> {
+  constructor(props: {}){
+    super(props)
+    this.state = {
+      todos: todosData
+    }
+  }
+  // state: MyState = {
+  //   todos: todosData,
+  // };
+
+  handleChange = (id: number): void => {
+    const updatedTodos = this.state.todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo, //id,text,completed
+          completed: !todo.completed //update completed
+        };
+      }
+      return todo;
+    });
+
+    this.setState({
+      todos: updatedTodos,
+    });
+  };
+
+  render() {
+    const todoItem = this.state.todos.map((data) => (
+      <TodoItem key={data.id} item={data} handleChange={this.handleChange} />
+    ));
+
+    return <div className='todo-list'>{todoItem}</div>;
+  }
 }
 
 export default App;
