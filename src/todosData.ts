@@ -4,30 +4,31 @@ export type todosDataType = {
   completed: boolean,
 };
 
+//Ideally should get JSON from an API
 export const todosData = [
   {
     id: 1,
-    text: "Take out the trash",
+    text: "Learn HTML",
     completed: true,
   },
   {
     id: 2,
-    text: "Grocery shopping",
+    text: "Learn CSS",
     completed: false,
   },
   {
     id: 3,
-    text: "Clean gecko tank",
+    text: "Learn Javascript",
     completed: false,
   },
   {
     id: 4,
-    text: "Mow lawn",
+    text: "Learn React",
     completed: true,
   },
   {
     id: 5,
-    text: "Catch up on Arrested Development",
+    text: "Apply for a job",
     completed: false,
   },
 ];

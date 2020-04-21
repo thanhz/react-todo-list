@@ -18,7 +18,7 @@ class App extends React.Component<MyProps, MyState> {
   //   todos: todosData,
   // };
 
-  handleChange = (id: number): void => {
+  handleChange = (id: number): void | todosDataType => {
     const updatedTodos = this.state.todos.map((todo) => {
       if (todo.id === id) {
         return {
