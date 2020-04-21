@@ -8,11 +8,11 @@ type MyState = {
   todos: todosDataType[];
 };
 class App extends React.Component<MyProps, MyState> {
-  constructor(props: {}){
-    super(props)
+  constructor(props: {}) {
+    super(props);
     this.state = {
-      todos: todosData
-    }
+      todos: todosData,
+    };
   }
   // state: MyState = {
   //   todos: todosData,
@@ -23,7 +23,7 @@ class App extends React.Component<MyProps, MyState> {
       if (todo.id === id) {
         return {
           ...todo, //id,text,completed
-          completed: !todo.completed //update completed
+          completed: !todo.completed, //update completed
         };
       }
       return todo;
@@ -39,7 +39,13 @@ class App extends React.Component<MyProps, MyState> {
       <TodoItem key={data.id} item={data} handleChange={this.handleChange} />
     ));
 
-    return <div className='todo-list'>{todoItem}</div>;
+    return (
+      <div className='todo-list'>
+        <h1>Todo-List</h1>
+        {todoItem}
+        <p>This todo-list was created using ReactJS and Typescript</p>
+      </div>
+    );
   }
 }
 
